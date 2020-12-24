@@ -1,0 +1,23 @@
+version: '3'
+services:
+  api:
+    build:
+      dockerfile: api.dockerfile
+      context: .
+    env_file: .env
+    command: npm run start:dev
+    volumes:
+      - ./packages/api:/home/node/app
+    ports:
+      - 3000:3000
+  ui:
+    build:
+      dockerfile: ui.dockerfile
+      target: builder
+      context: .
+    env_file: .env
+    command: npm run start -- --host 0.0.0.0
+    volumes:
+      - ./packages/ui:/home/node/build
+    ports:
+      - 4200:4200
