@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "A place for verified conservatives to gather and share resources",
   "scripts": {
+    "clean": "lerna run clean --stream",
     "postinstall": "lerna bootstrap",
     "start": "concurrently 'npm run start --prefix packages/ui' 'npm run start:dev --prefix packages/api'"
   },

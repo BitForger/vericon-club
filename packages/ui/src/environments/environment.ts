@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  discordClientId: '790682427613904957'
+  callbackUrl: 'http://localhost:4200/auth/callback',
+  apiUrl: 'http://localhost:3000',
 };
 
 /*

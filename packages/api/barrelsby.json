@@ -1,0 +1,9 @@
+{
+  "directory": "./src",
+  "delete": true,
+  "location": "below",
+  "structure": "flat",
+  "include": [".ts$"],
+  "exclude": ["dist$", "node_modules$", "controllers.module.ts$"],
+  "singleQuotes": true
+}
