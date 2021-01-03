@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { environment } from '../../../environments/environment';
 import { CookieService } from 'ngx-cookie-service';
+import { DiscordService } from '../discord/discord.service';
 
 @Injectable({
   providedIn: 'root',
@@ -21,6 +22,7 @@ export class AuthService {
     private location: Location,
     private activatedRoute: ActivatedRoute,
     private cookieService: CookieService,
+    private discordService: DiscordService,
   ) {}
 
   isLoggedIn() {
@@ -32,8 +34,15 @@ export class AuthService {
     window.location.href = this.getAuthUrl();
   }
 
-  getAccessToken(code: string) {
-    // make call here
+  async isAuthorized(token: string) {
+    const guilds = await this.discordService.getGuilds(token);
+    if (guilds.some((value) => value.id === environment.guildId)) {
+      /*const guild = await this.discordService.getGuild(
+        environment.guildId,
+        token,
+      );
+      console.log('guild', guild);*/
+    }
   }
 
   private getAuthUrl(scopes = 'identify guilds') {
@@ -41,6 +50,6 @@ export class AuthService {
       environment.discordClientId
     }&redirect_uri=${encodeURIComponent(
       environment.callbackUrl,
-    )}&response_type=code&scope=${encodeURIComponent(scopes)}`;
+    )}&response_type=token&scope=${encodeURIComponent(scopes)}`;
   }
 }

@@ -1,0 +1,15 @@
+export const Feature = [
+  'INVITE_SPLASH',
+  'VIP_REGIONS',
+  'VANITY_URL',
+  'VERIFIED',
+  'PARTNERED',
+  'COMMUNITY',
+  'COMMERCE',
+  'NEWS',
+  'DISCOVERABLE',
+  'FEATURABLE',
+  'ANIMATED_ICON',
+  'BANNER',
+  'WELCOME_SCREEN_ENABLED',
+];
